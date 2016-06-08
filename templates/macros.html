@@ -1,0 +1,7 @@
+{% macro form_errors(f) %}
+    <div class="errors">
+        {% for error in f %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+{% endmacro %}

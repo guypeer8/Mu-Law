@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul class="expertise-menu float-right">
+        {% for d in data[language] %}
+            <li class="head">{{ d.head }}</li>
+            <li class="body">{{ d.body }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

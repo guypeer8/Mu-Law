@@ -1,0 +1,23 @@
+
+<nav>
+    <a href="/{{ language }}" class="float-left">
+        {% if language == 'he' %}
+            ד"ר אלי מורלקוב
+        {% else %}
+            Dr. Eli Murlakov
+        {% endif %}
+    </a>
+    <div class="langs-dropdown-wrapper float-right">
+        <span class="langs-dropdown" id="langs-dropdown">{{ lang_label[language] }}</span>
+        <ul class="languages">
+            {% for l in langs %}
+                <li>
+                    <a href="{{ l.path }}" {% if l.path == '/he' %}style="font-size:15.5px;"{% endif %}>
+                        <img src="{{ url_for('static', filename='images/' + l.image) }}" height="10" title="{{ l.id }}" />
+                        <span>{{ l.id }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

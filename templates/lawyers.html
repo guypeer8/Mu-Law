@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="lawyers float-right">
+        {% for l in data[language] %}
+            <div class="lawyer">
+                <p class="name">
+                    <span>{{ l.name }}</span>
+                </p>
+                {% for g in l.general %}
+                    <p class="general">* {{ g }}</p>
+                {% endfor %}
+                {% if 'education' in l %}
+                    <p class="headline">{{ l.education_text }}</p>
+                    {% for e in l.education %}
+                        <p class="general">* {{ e }}</p>
+                    {% endfor %}
+                {% endif %}
+                {% if 'prev_positions' in l %}
+                    <p class="headline">{{ l.prev_positions_text }}</p>
+                    {% for p in l.prev_positions %}
+                        <p class="general">* {{ p }}</p>
+                    {% endfor %}
+                {% endif %}
+                {% if 'expert_fields' in l %}
+                    <p class="headline">{{ l.expert_fields_text }}</p>
+                    {% for p in l.expert_fields %}
+                        <p class="general">* {{ p }}</p>
+                    {% endfor %}
+                {% endif %}
+                <div>
+                    <img title="{{ l.name }}" src="{{ url_for('static', filename='images/' + l.image) }}" height="200" />
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

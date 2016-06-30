@@ -154,6 +154,7 @@ header p {
 }
 .expertise-menu li.body {
     background: #f5f5f5;
+    display: none;
 }
 .lawyers {
     width: calc(100% - 220px);

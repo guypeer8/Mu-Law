@@ -1,9 +1,43 @@
-
 <script type="text/javascript">
+(function() {
+
 var langs = document.querySelector('.languages');
 var langs_dropdown = document.getElementById('langs-dropdown');
-langs.style.display = 'none';
-langs_dropdown.addEventListener('click', function(){
-    langs.style.display == 'none' ? langs.style.display = 'block' : langs.style.display = 'none';
+langs.style.visibility  = 'hidden';
+langs_dropdown.addEventListener('click', function() {
+    if(langs.style.visibility  === 'hidden') {
+    	langs.style.height = '10px';
+    	langs.style.visibility  = 'visible';
+    	var interval = window.setInterval(function() {
+    		if(numberize(langs) >= 150) {
+    			window.clearInterval(interval);
+    		}
+    		else {
+    			pixelize(langs);
+    		}
+    	}, 10);
+    }
+    else {	
+    	var interval = window.setInterval(function() {
+    		if(numberize(langs) <= 0) {
+    			langs.style.visibility = 'hidden';
+    			window.clearInterval(interval);
+    		}
+    		else {
+    			pixelize(langs, -10);
+    		}
+    	}, 10);
+    }
 });
+
+function numberize(el) {
+	return Number(el.style.height.replace('px', ''));
+}
+
+function pixelize(el, add) {
+	add = add || 10;
+	el.style.height = numberize(el) + add + 'px';
+}
+
+})();
 </script>

@@ -1,24 +1,23 @@
-
 {% if on_expertise %}
 <script type="text/javascript">
+(function() {
+
 var heads = document.querySelectorAll('.expertise-menu .head');
-var bodies = document.querySelectorAll('.expertise-menu .body');
-for(var i=0; i<bodies.length; i++) {
-    bodies[i].style.display = 'none';
-}
 for(var i=0; i<heads.length; i++) {
-    (function(i){
+    (function(i) {
         heads[i].addEventListener('click', function() {
             if(this.className.indexOf('active') === -1) {
-                this.className += ' active';
+                this.classList.add('active');
                 this.nextElementSibling.style.display = 'block';
             }
             else {
-                this.className = this.className.replace('active', '').trim();
+                this.classList.remove('active');
                 this.nextElementSibling.style.display = 'none';
             }
         });
     })(i);
 }
+
+})();
 </script>
 {% endif %}

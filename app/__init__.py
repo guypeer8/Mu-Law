@@ -223,21 +223,21 @@ contact_info = {
     'en': {
         'title': 'Contact',
         'street': 'Banin Building, 52 Nahalat Benjamin Street, Tel Aviv 65154, Israel',
-        'phone': {'id': 'Phone', 'number': '(00972 3) 5106789'},
-        'fax': {'id': 'Fax', 'number': '+ 973-3-510-5773'},
+        'phone': {'id': 'Phone', 'number': '(+972)-528360503'},
+        'fax': {'id': 'Fax', 'number': '(+972)-35105773'},
         'mail': {'id': 'Mail'}
     },
     'de': {
         'title': 'KONTAKT',
         'street': 'Nahalat Benjamin Strasse 52, Tel-Aviv, Israel',
-        'phone': {'id': 'Tel', 'number': '00 972 3 5106789'},
-        'fax': {'id': 'Fax', 'number': '00 972 3 5105773'},
+        'phone': {'id': 'Tel', 'number': '(+972)-528360503'},
+        'fax': {'id': 'Fax', 'number': '(+972)-35105773'},
         'mail': {'id': 'e-mail'}
     },
     'he': {
         'title': 'יצירת קשר',
         'street': 'בית בנין, רחוב נחלת בנימין 52 (פינת שדרות רוטשילד 19) תל אביב',
-        'phone': {'id': 'טלפון', 'number': '03-5106789'},
+        'phone': {'id': 'טלפון', 'number': '0528360503'},
         'fax': {'id': 'פקס', 'number': '03-5105773'},
         'mail': {'id': 'מייל'}
     }

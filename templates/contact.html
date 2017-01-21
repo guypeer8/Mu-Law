@@ -5,7 +5,7 @@
     {% set d = data[language] %}
     <div class="contact-container float-right">
         <div class="contact-form float-right">
-            <form action="/{{ language }}/contact" method="POST" name="contact-form">
+            <form action="/{{ language }}/contact" method="POST" name="contact-form" id="contact-form">
                 <h3>{{ title }}</h3>
                 <label for="name">{{ name }}</label>
                 {{ form.name(size=16) }}
@@ -39,3 +39,33 @@
     </div>
     <div class="clear"></div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+(function() {
+
+var $$form = document.getElementById('contact-form');
+var wasFormSubmitted = false;
+
+function submitForm() {
+    if(!wasFormSubmitted) {
+        wasFormSubmitted = true;
+        $$form.submit();
+    }
+}
+
+$$form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    ga('muTracker.send', {
+        hitType: 'event',
+        eventCategory: 'Contact Form',
+        eventAction: 'submit',
+        eventLabel: '{{ language }}',
+        hitCallback: submitForm
+    });
+    window.setTimeout(submitForm, 1500);
+});
+
+})();
+</script>
+{% enblock %}

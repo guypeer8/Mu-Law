@@ -3,8 +3,32 @@
 {% block content %}
     <ul class="expertise-menu float-right">
         {% for d in data[language] %}
-            <li class="head">{{ d.head }}</li>
-            <li class="body">{{ d.body }}</li>
+            <li class="head" data-bind="css: {'active': {{ loop.index }} === active()}, click: function(){activate({{ loop.index }});}">
+            {{ d.head }}
+        	</li>
+            <li class="body" data-bind="style: {'display': {{ loop.index }} === active() ? 'block' : 'none'}, click: function(){activate({{ loop.index }});}">
+            	{{ d.body }}
+            </li>
         {% endfor %}
     </ul>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+<script>
+(function() {
+
+var vm = {
+	active: ko.observable(null),
+	activate: function(index) {
+		if(this.active() === index) {
+			return this.active(null);
+		}
+		this.active(index);
+	}
+}
+
+ko.applyBindings(vm, document.querySelector('.expertise-menu'));
+})();
+</script>
 {% endblock %}

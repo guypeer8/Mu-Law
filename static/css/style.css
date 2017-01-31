@@ -158,7 +158,7 @@ header p {
 }
 .lawyers {
     width: calc(100% - 220px);
-    padding: 27px 74px;
+    padding: 27px 15px;
     background: white;
 }
 .lawyers .lawyer {

@@ -4,30 +4,24 @@
 var langs = document.querySelector('.languages');
 var langs_dropdown = document.getElementById('langs-dropdown');
 langs.style.visibility  = 'hidden';
+	
 langs_dropdown.addEventListener('click', function() {
-    if(langs.style.visibility  === 'hidden') {
-    	langs.style.height = '10px';
-    	langs.style.visibility  = 'visible';
-    	var interval = window.setInterval(function() {
-    		if(numberize(langs) >= 150) {
-    			window.clearInterval(interval);
-    		}
-    		else {
-    			pixelize(langs);
-    		}
-    	}, 10);
-    }
-    else {	
-    	var interval = window.setInterval(function() {
-    		if(numberize(langs) <= 0) {
-    			langs.style.visibility = 'hidden';
-    			window.clearInterval(interval);
-    		}
-    		else {
-    			pixelize(langs, -10);
-    		}
-    	}, 10);
-    }
+	if(langs.style.visibility  === 'hidden') {
+		langs.style.height = '10px';
+		langs.style.visibility  = 'visible';
+		var interval = window.setInterval(function() {
+			if(numberize(langs) < 150) 
+				return pixelize(langs);
+			window.clearInterval(interval);
+		}, 10);
+		return;
+	}
+	var interval = window.setInterval(function() {
+		if(numberize(langs) > 0) 
+			return pixelize(langs, -10);
+		langs.style.visibility = 'hidden';
+		window.clearInterval(interval);
+	}, 10);
 });
 
 function numberize(el) {
